@@ -2258,6 +2258,7 @@
  {
   "text": "12/24",
   "ref_time": "2022-11-30T06:12:01",
+  "date_format": "US",
   "gold_parse": "Time[]{2022-12-24 X:X (X/X)}",
   "language": "de"
  },

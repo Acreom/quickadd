@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 # A triplet of text, reference timestamp and correct parse.
 # It can be used as raw data to build datasets for ctparse.
 TimeParseEntry = NamedTuple(
-    "TimeParseEntry", [("text", str), ("ts", datetime), ("gold", Artifact)],
+    "TimeParseEntry", [("text", str), ("ts", datetime), ("date_format", str), ("gold", Artifact)],
 )
 
 T = TypeVar("T")
@@ -71,6 +71,7 @@ def make_partial_rule_dataset(
         for parse in ctparse_gen(
             entry.text,
             entry.ts,
+            entry.date_format,
             relative_match_len=relative_match_len,
             timeout=timeout,
             max_stack_depth=max_stack_depth,
@@ -114,6 +115,7 @@ def load_timeparse_corpus(fname: str) -> Sequence[TimeParseEntry]:
         TimeParseEntry(
             text=e["text"],
             ts=datetime.strptime(e["ref_time"], "%Y-%m-%dT%H:%M:%S"),
+            date_format=e["date_format"] if e["date_format"] else None,
             gold=parse_nb_string(e["gold_parse"]),
         )
         for e in entries
