@@ -18,12 +18,14 @@ CORPUS_JSON = """
  {
   "text": "Donnerstag, den 05.10. ca 6:55",
   "ref_time": "2017-09-25T16:06:55",
+  "date_format": "EU",
   "gold_parse": "Time[]{2017-10-05 06:55 (X/X)}",
   "language": "de"
  },
  {
   "text": "22.05.2017 früh",
   "ref_time": "2017-05-16T05:42:09",
+  "date_format": "EU",
   "gold_parse": "Time[]{2017-05-22 X:X (X/earlymorning)}",
   "language": "de"
  }
@@ -48,9 +50,10 @@ def test_run_corpus_failure() -> None:
 
 def test_make_partial_rule_dataset() -> None:
     ts = datetime(year=2019, month=10, day=1)
+    date_format = "EU"
     entries = [
         TimeParseEntry(
-            "today at 5 pm", ts, Time(year=2019, month=10, day=1, hour=17, minute=0)
+            "today at 5 pm", ts, date_format, Time(year=2019, month=10, day=1, hour=17, minute=0)
         )
     ]
 
