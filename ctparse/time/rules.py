@@ -531,6 +531,7 @@ def ruleHHMMmilitary(ts: datetime, pm_bias: bool, date_format: str, m: RegexMatc
     r"\s*(?P<clock>uhr|h)?"  # We match uhr with no minute
     r"(?P<ampm>\s*[ap]\.?m\.?)?"  # AM PM
     r"(?!\d)"
+    r"(?<![a-zA-Z])-?\d+" # handle acr-01
 )
 def ruleHHMM(ts: datetime, pm_bias: bool, date_format: str, m: RegexMatch) -> Time:
     # hh [am|pm]
