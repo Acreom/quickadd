@@ -2,7 +2,7 @@
 quickadd
 ===========================================================
 
-quickadd is a natural language date & time parser written in python. It builds on top of ctparse_ and is an actively maintained fork. 
+quickadd is a natural language date & time parser written in python. It builds on top of ctparse_ and is an actively maintained fork by Martin Antos.
 
 Installation
 ----------
